@@ -9,10 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.io.Serializable;
-@Named("reservarSalaBean")
+@Named("reservaSalaBean")
 @ViewScoped
 public class ReservaBean implements Serializable {
     private ReservaSala reservaSala;
+
+    public String cadastrarReserva() {
+        reservaSala = new ReservaSala();
+        return "";
+    }
+
 
 
 }

@@ -18,6 +18,7 @@ public class LoginFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String url = req.getRequestURL().toString();
         if (url.contains("/restrito") && loginBean.getUsuario() == null) {
+            System.out.println("Redirecionado usuario");
             res.sendRedirect(req.getServletContext().getContextPath()+"/login.xhtml");
         }
         else{

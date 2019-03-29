@@ -23,6 +23,7 @@ public class LoginBean implements Serializable {
 
         if(this.login.equals("w") && this.senha.equals("1")) {
             System.out.println("Logar()");
+            usuario = new Usuario();
             return "/restrito/inicioSistema.xhtml?faces-redirect=true";
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "login ou senha inválidos"));

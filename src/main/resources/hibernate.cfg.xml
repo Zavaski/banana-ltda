@@ -15,6 +15,7 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="com.banana.Model.Usuario" />
-
+        <mapping class="com.banana.Model.Local" />
+        <mapping class="com.banana.Model.Sala" />
     </session-factory>
 </hibernate-configuration>

@@ -15,12 +15,18 @@ public class Usuario {
     private String senha;
     private String email;
 
-    public int getID() {
-        return ID;
+    public Usuario() {
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public Usuario(String nome, String login, String senha, String email) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.email = email;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getNome() {

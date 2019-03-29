@@ -1,23 +1,20 @@
 package com.banana.DAO;
 
+import com.banana.Model.Local;
 import com.banana.Model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.banana.DAO.HibernateUtil;
-import com.banana.Model.Usuario;
 
 import java.util.List;
 
-public class UsuarioDAO {
+public class LocalDAO {
 
-    public void criarUsuario(Usuario user) {
+    public void criarLocal(Local local) {
+        System.out.println("Cadastrar Local DAO");
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
             transaction = session.beginTransaction();
-            // save the student objects
-            session.save(user);
-            // commit transaction
+            session.save(local);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -26,41 +23,50 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
     }
-    public List<Usuario> listarUsuarios(){
+    public List<Local> listarLocais(){
+        System.out.println("Listar Local DAO");
+
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List <Usuario> users = session.createQuery("from Usuario ", Usuario.class).list();
-            return users;
+            List <Local> locais = session.createQuery("from Local ", Local.class).list();
+            return locais;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
 
     }
-    public void deletarUsuario(Usuario user) {
+    public void deletarLocal(Local local) {
+        System.out.println("Deletar Local DAO");
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
             transaction = session.beginTransaction();
-            // save the student objects
-            session.delete(user);
-            // commit transaction
+            session.delete(local);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void editarUsuario(Usuario user) {
+    public void editarLocal(Local local) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
             transaction = session.beginTransaction();
-            // save the student objects
-            session.update(user);
-            // commit transaction
+            session.update(local);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    public Local searchLocal(int ID){
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Local local =  (Local) session.get(Local.class, ID);
+            transaction.commit();
+            return local;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -13,6 +13,16 @@ public class Local {
     private int ID;
     private String nome;
     private String CNPJ;
+    private String endereco;
+
+    public Local(String nome, String CNPJ, String endereco) {
+        this.nome = nome;
+        this.CNPJ = CNPJ;
+        this.endereco = endereco;
+    }
+
+    public Local() {
+    }
 
     public int getID() {
         return ID;
@@ -38,5 +48,11 @@ public class Local {
         this.CNPJ = CNPJ;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 }

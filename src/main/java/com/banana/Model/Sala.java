@@ -1,9 +1,6 @@
 package com.banana.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Sala {
@@ -12,15 +9,11 @@ public class Sala {
     private int ID;
     private String nome;
     private String descricao;
-    private int IDLocal;
+    @OneToOne
+    @JoinColumn(name = "local_id")
+    private Local local;
 
-    public int getIDLocal() {
-        return IDLocal;
-    }
 
-    public void setIDLocal(int IDLocal) {
-        this.IDLocal = IDLocal;
-    }
 
     public void setID(int ID) {
         this.ID = ID;
@@ -44,5 +37,13 @@ public class Sala {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
     }
 }
